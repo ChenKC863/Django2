@@ -1,11 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blog_spot.models import Post
 # Create your views here.
+from datetime import datetime
 
 def index(requests):
     posts = Post.objects.all()
-    post_list = list()
-    for count, post in enumerate(posts):
-        post_list.append("#{}: {}<br><br>".format(str(count),str(post)))
-    return HttpResponse(post_list)
+    now = datetime.now()
+    
+    return render(requests, "index.html", locals()) #HttpResponse(post_list)
+
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
+
+def showPost(requests, slug):
+    #1.查詢資料庫
+    try:
+        post = Post.objects.get(slug=slug) #urlencoding
+    except ObjectDoesNotExist:
+        return redirect('/')
+    except MultipleObjectsReturned:
+        return redirect('/')
+    
+    return render(requests, 'post.html', locals())
