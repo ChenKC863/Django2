@@ -1,0 +1,13 @@
+{% extends "scaffolds/base.html" %}
+
+
+{% block content %}
+<h1> 這是使用模板繼承產生的 </h1>
+{% for post in posts %}
+    <a href="post/{{post.slug}}">
+        <p class="post_title"> {{ post.title }}</p>
+    </a>
+{% endfor %}
+
+
+{% endblock %}

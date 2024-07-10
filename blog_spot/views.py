@@ -6,9 +6,8 @@ from datetime import datetime
 
 def index(requests):
     posts = Post.objects.all()
-    now = datetime.now()
-    
-    return render(requests, "index.html", locals()) #HttpResponse(post_list)
+    now = datetime.now() # post.content
+    return render(requests, "pages/index.html", locals())
 
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
@@ -21,4 +20,4 @@ def showPost(requests, slug):
     except MultipleObjectsReturned:
         return redirect('/')
     
-    return render(requests, 'post.html', locals())
+    return render(requests, 'pages/post.html', locals())

@@ -23,12 +23,16 @@
         </style>
     </head>
     <body>
-        <h1>{{post.title }}</h1>
-        <hr>
-        <p class="post_body"> {{post.content}}</p>
-        <p class="post_date"> {{post.pub_date}}</p>
-        <hr>
+    
+        {% extends "scaffolds/base.html" %}
 
-        <h3> <a href="/"> 回首頁 </a> </h3>
+
+        {% block content %}
+            <h1>{{ post.title }}</h1>
+            <hr />
+            <p class="post_body">{{ post.content }}</p>
+            <p class="post_date">{{ post.pub_date }}</p>
+        {% endblock %}
+        
     </body>
 </html>
