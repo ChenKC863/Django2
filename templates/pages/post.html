@@ -26,11 +26,12 @@
     
         {% extends "scaffolds/base.html" %}
 
-
         {% block content %}
             <h1>{{ post.title }}</h1>
             <hr />
-            <p class="post_body">{{ post.content }}</p>
+            {% load markdown_tag %}
+            <p class="post_body">{{ post.content | markdown | safe | linebreaks }}</p> 
+#  post.content | markdown 支援markdown的渲染 | safe 渲染html的語法,e.g.包含jscode| linebreaks 很像pipline  
             <p class="post_date">{{ post.pub_date }}</p>
         {% endblock %}
         
