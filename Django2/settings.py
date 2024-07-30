@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import pymysql
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,10 +78,21 @@ WSGI_APPLICATION = "Django2.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "USER": "django_db",
+        "NAME": "django_db",
+        "PASSWORD": "VAjoIJyl(HPdmy(H",#改成自己的密碼
+        "HOST": "127.0.0.1",
+        "PORT": "3306" 
     }
 }
 
@@ -130,4 +142,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ## Secure cross policy
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+##SECURE_CROSS_ORIGIN_OPENER_POLICY = None
