@@ -21,3 +21,8 @@ def showPost(requests, slug):
         return redirect('/')
     
     return render(requests, 'pages/post.html', locals())
+from django.http import JsonResponse
+def testjson(requests):
+    # QuerySet
+    posts = list(Post.objects.all().values())
+    return JsonResponse(posts, status=200, safe=False)
