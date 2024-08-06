@@ -16,7 +16,6 @@ pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -37,8 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',\
+    'django.contrib.staticfiles',
     'blog_spot',
+#    'api',
+    'line_bot',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ## Secure cross policy
 ##SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+LINE_CHANNEL_ACCESS_TOKEN="z7E7DVlDCeY9jNpeUxCdage+FrmqAV66d0qluuNTECzF+9nWFPuCdIEqY+Z6zVdAgVCNmFNr9IMICycK8xN2Ps3blgWEM+EtRUzkh3HvXzqgVQrRJCHrdT18H+Y97ypdKyZ1SqWFQuA6xQ6kInfHUwdB04t89/1O/w1cDnyilFU="
+LINE_CHANNEL_SECRET="551b068506fb03c2289143491969618e"

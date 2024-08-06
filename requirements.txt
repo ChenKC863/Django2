@@ -26,6 +26,7 @@ Markdown==3.6
 # Pillow==9.5.0
 # pydantic==2.3.0
 # pydantic_core==2.6.3
+pymysql==1.1.1
 # pyparsing==3.0.9
 # python-dateutil==2.8.2
 # pytz==2023.3
@@ -38,3 +39,4 @@ Markdown==3.6
 # urllib3==2.0.4
 # wrapt==1.15.0
 # yarl==1.9.2
+line-bot-sdk==3.11.0
