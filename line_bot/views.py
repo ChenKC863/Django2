@@ -9,8 +9,8 @@ from django.conf import settings
 # 引入 linebot SDK
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError, LineBotApiError
-from linebot.models import MessageEvent, TextSendMessage, TextMessage
-
+from linebot.models import MessageEvent, TextSendMessage, TextMessage, StickerMessage
+from linebot.models.messages
 
 # 建立 linebot classs 進行連線
 line_bot_api = LineBotApi(settings.LINE_CHANNEL_ACCESS_TOKEN)
@@ -33,16 +33,35 @@ def callback(request):
             return HttpResponseBadRequest()
        
         for event in events:
+            print(event)
+            
+            x = ImageSet()
+            
             if isinstance(event, MessageEvent):
                 if isinstance(event.message, TextMessage):
                     res_text = event.message.text
-                    if res_text == '123':                     
-                        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = "456"))
-                    else:
+                    
+                    
+                    print(res_text)
+                    if event.message.text == "@我要報到":                     
+                        line_bot_api.reply_message(event.reply_token, StickerMessage(package_id=6136, sticker_id = 10551376))
+                    elif event.message.text == "@我的名牌":
                         line_bot_api.reply_message(event.reply_token, TextSendMessage(text = res_text))                           
+                    elif event.message.text == "@車號登入":
+                        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = res_text))
+                    else:
+                        line_bot_api.reply_message(event.reply_token, TextSendMessage(text = res_text))
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
+
+def sendMsg(requests, uid):
+    line_bot_api.push_message(uid, TextSendMessage(text = "Hello"))
+    return HttpResponse()
+
+def sendMsg_new(requests, uid):
+    line_bot_api.push_message(uid, TextSendMessage(text = "Hello--new"))
+    return HttpResponse()
 
 # from django.shortcuts import render
 # from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
